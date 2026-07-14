@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geometric Square Flower Spiral</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
+    overflow:hidden;
+}
+
+/* Flower */
+
+.flower{
+    position:relative;
+    width:0;
+    height:0;
+    animation:rotateFlower 18s linear infinite;
+}
+
+/* Petals */
+
+.petal{
+    position:absolute;
+    top:0;
+    left:0;
+    border:2px solid #000;
+    transform-origin:center center;
+    animation:spin 8s ease-in-out infinite alternate;
+    transition:0.8s;
+}
+
+/* Nested square petals */
+
+.p1{
+    width:50px;
+    height:50px;
+    transform:translate(-25px,-25px) rotate(0deg);
+}
+
+.p2{
+    width:80px;
+    height:80px;
+    transform:translate(-40px,-40px) rotate(22.5deg);
+    animation-delay:.2s;
+}
+
+.p3{
+    width:110px;
+    height:110px;
+    transform:translate(-55px,-55px) rotate(45deg);
+    animation-delay:.4s;
+}
+
+.p4{
+    width:140px;
+    height:140px;
+    transform:translate(-70px,-70px) rotate(67.5deg);
+    animation-delay:.6s;
+}
+
+.p5{
+    width:170px;
+    height:170px;
+    transform:translate(-85px,-85px) rotate(90deg);
+    animation-delay:.8s;
+}
+
+.p6{
+    width:200px;
+    height:200px;
+    transform:translate(-100px,-100px) rotate(112.5deg);
+    animation-delay:1s;
+}
+
+.p7{
+    width:230px;
+    height:230px;
+    transform:translate(-115px,-115px) rotate(135deg);
+    animation-delay:1.2s;
+}
+
+.p8{
+    width:260px;
+    height:260px;
+    transform:translate(-130px,-130px) rotate(157.5deg);
+    animation-delay:1.4s;
+}
+
+/* Small center square */
+
+.center{
+    position:absolute;
+    width:12px;
+    height:12px;
+    border:2px solid #000;
+    transform:translate(-6px,-6px);
+}
+
+/* Hover Effect */
+
+.flower:hover .petal{
+    transform:translate(var(--x,0),var(--y,0)) rotate(360deg) scale(1.05);
+}
+
+/* Animations */
+
+@keyframes rotateFlower{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes spin{
+    0%{
+        transform:
+        translate(calc(-1 * (var(--s)/2)),calc(-1 * (var(--s)/2)))
+        rotate(0deg);
+    }
+
+    50%{
+        transform:
+        translate(calc(-1 * (var(--s)/2)),calc(-1 * (var(--s)/2)))
+        rotate(180deg);
+    }
+
+    100%{
+        transform:
+        translate(calc(-1 * (var(--s)/2)),calc(-1 * (var(--s)/2)))
+        rotate(360deg);
+    }
+}
+
+/* Size Variables */
+
+.p1{--s:50px;}
+.p2{--s:80px;}
+.p3{--s:110px;}
+.p4{--s:140px;}
+.p5{--s:170px;}
+.p6{--s:200px;}
+.p7{--s:230px;}
+.p8{--s:260px;}
+
+</style>
+</head>
+
+<body>
+
+<div class="flower">
+
+    <div class="petal p1"></div>
+    <div class="petal p2"></div>
+    <div class="petal p3"></div>
+    <div class="petal p4"></div>
+    <div class="petal p5"></div>
+    <div class="petal p6"></div>
+    <div class="petal p7"></div>
+    <div class="petal p8"></div>
+
+    <div class="center"></div>
+
+</div>
+
+</body>
+</html>
