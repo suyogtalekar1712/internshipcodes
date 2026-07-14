@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do App</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        input{
+            padding: 8px;
+            width: 250px;
+        }
+
+        button{
+            padding: 8px 12px;
+            margin: 3px;
+            cursor: pointer;
+        }
+
+        li{
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .completed{
+            text-decoration: line-through;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>To Do App</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter Task">
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+<script>
+
+    // Array to store tasks
+    let tasks = [];
+
+    // Add Task
+    function addTask()
+    {
+        let taskText = document.getElementById("taskInput").value;
+
+        if(taskText === "")
+        {
+            alert("Enter a task");
+            return;
+        }
+
+        tasks.push({
+            name: taskText,
+            completed: false
+        });
+
+        console.log("Task Added:", taskText);
+        console.log("Current Array:", tasks);
+
+        document.getElementById("taskInput").value = "";
+
+        displayTasks();
+    }
+
+    // Display Tasks
+    function displayTasks()
+    {
+        let list = document.getElementById("taskList");
+
+        list.innerHTML = "";
+
+        for(let i=0; i<tasks.length; i++)
+        {
+            let li = document.createElement("li");
+
+            li.innerHTML = `
+                <span class="${tasks[i].completed ? 'completed' : ''}">
+                    ${tasks[i].name}
+                </span>
+
+                <button onclick="updateTask(${i})">
+                    Update
+                </button>
+
+                <button onclick="deleteTask(${i})">
+                    Delete
+                </button>
+
+                <button onclick="completeTask(${i})">
+                    Complete
+                </button>
+            `;
+
+            list.appendChild(li);
+        }
+    }
+
+    // Update Task
+    function updateTask(index)
+    {
+        let newTask = prompt("Enter New Task Name", tasks[index].name);
+
+        if(newTask != null && newTask !== "")
+        {
+            console.log(
+                "Task Updated:",
+                tasks[index].name,
+                "to",
+                newTask
+            );
+
+            tasks[index].name = newTask;
+
+            console.log("Current Array:", tasks);
+
+            displayTasks();
+        }
+    }
+
+    // Delete Task
+    function deleteTask(index)
+    {
+        console.log("Task Deleted:", tasks[index].name);
+
+        tasks.splice(index,1);
+
+        console.log("Current Array:", tasks);
+
+        displayTasks();
+    }
+
+    // Complete Task
+    function completeTask(index)
+    {
+        tasks[index].completed = true;
+
+        console.log("Task Completed:", tasks[index].name);
+
+        console.log("Current Array:", tasks);
+
+        displayTasks();
+    }
+
+</script>
+</body>
+</html>

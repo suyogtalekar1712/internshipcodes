@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hover Emoji</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:white;
+}
+
+.emoji{
+    height:500px;
+    width:500px;
+    border:2px solid black;
+    border-radius:50%;
+    background:yellow;
+    position:relative;
+}
+
+/* Left Eye */
+
+.eyes1{
+    height:100px;
+    width:100px;
+    border:2px solid black;
+    border-radius:50%;
+    background:white;
+    position:absolute;
+    top:130px;
+    left:110px;
+    transition:0.5s;
+}
+
+.circle1{
+    height:50px;
+    width:50px;
+    background:black;
+    border-radius:50%;
+    margin:25px;
+    transition:0.5s;
+}
+
+/* Right Eye */
+
+.eyes2{
+    height:100px;
+    width:100px;
+    border:2px solid black;
+    border-radius:50%;
+    background:white;
+    position:absolute;
+    top:130px;
+    right:110px;
+    transition:0.5s;
+}
+
+.circle2{
+    height:50px;
+    width:50px;
+    background:black;
+    border-radius:50%;
+    margin:25px;
+    transition:0.5s;
+}
+
+/* Mouth */
+
+.smile{
+    height:60px;
+    width:170px;
+    background:red;
+    border-radius:0 0 150px 150px;
+    position:absolute;
+    bottom:120px;
+    left:165px;
+    transition:0.5s;
+}
+
+/* HOVER EFFECT */
+
+.emoji:hover .eyes1{
+    transform:translateY(-20px) rotate(-10deg);
+}
+
+.emoji:hover .eyes2{
+    transform:translateY(-20px) rotate(10deg);
+}
+
+.emoji:hover .circle1{
+    margin-left:35px;
+    margin-top:15px;
+}
+
+.emoji:hover .circle2{
+    margin-left:15px;
+    margin-top:15px;
+}
+
+.emoji:hover .smile{
+    width:220px;
+    height:90px;
+    left:140px;
+    border-radius:0 0 200px 200px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="emoji">
+
+    <div class="eyes1">
+        <div class="circle1"></div>
+    </div>
+
+    <div class="eyes2">
+        <div class="circle2"></div>
+    </div>
+
+    <div class="smile"></div>
+
+</div>
+
+</body>
+</html>

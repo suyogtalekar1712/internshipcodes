@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suyog's Shop</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+input,select{
+    padding:10px;
+}
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+.card{
+    width:250px;
+    padding:15px;
+    border:1px solid black;
+    border-radius:10px;
+    text-align:center;
+}
+
+.card img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+}
+
+button{
+    padding:8px 15px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Suyog's Shop</h1>
+
+<div class="controls">
+
+    <input type="text" id="search"
+           placeholder="Search Product">
+
+    <select id="brandFilter">
+        <option value="all">All Brands</option>
+        <option value="apple">Apple</option>
+        <option value="samsung">Samsung</option>
+        <option value="crocs">Crocs</option>
+        <option value="woodland">Woodland</option>
+        <option value="levis">Levis</option>
+        <option value="spykar">Spykar</option>
+    </select>
+
+    <select id="sortPrice">
+        <option value="default">Sort Price</option>
+        <option value="low-high">Low To High</option>
+        <option value="high-low">High To Low</option>
+    </select>
+
+</div>
+
+<div class="products" id="products"></div>
+
+<div class="footer">
+    Suyog's Shop | Contact: 7058918014 |
+    Email: suyogt123@gmail.com
+</div>
+
+<script>
+
+let products = [
+
+{
+    pname:"Iphone 17 Pro",
+    company:"Apple",
+    price:82000,
+    image:"iphone.jpg"
+},
+
+{
+    pname:"Samsung S25 Ultra",
+    company:"Samsung",
+    price:76000,
+    image:"galaxys25.jpg"
+},
+
+{
+    pname:"Crocs Classic",
+    company:"Crocs",
+    price:299,
+    image:"crocs.jpg"
+},
+
+{
+    pname:"Woodland Sandals",
+    company:"Woodland",
+    price:999,
+    image:"pumacrocs.jpg"
+},
+
+{
+    pname:"Baggy Jeans",
+    company:"Levis",
+    price:899,
+    image:"jeans.jpg"
+},
+
+{
+    pname:"Slim Fit Jeans",
+    company:"Spykar",
+    price:1299,
+    image:"regularjeans.jpg"
+}
+
+];
+
+let productContainer =
+document.getElementById("products");
+
+let search =
+document.getElementById("search");
+
+let brandFilter =
+document.getElementById("brandFilter");
+
+let sortPrice =
+document.getElementById("sortPrice");
+
+function display(data){
+
+    productContainer.innerHTML="";
+
+    data.forEach(item=>{
+
+        productContainer.innerHTML += `
+        <div class="card">
+
+            <img src="${item.image}" alt="${item.pname}">
+
+            <h3>${item.pname}</h3>
+
+            <p>Brand: ${item.company}</p>
+
+            <p>Price: ₹${item.price}</p>
+
+            <button onclick="buyProduct('${item.pname}')">
+                Buy Now
+            </button>
+
+        </div>
+        `;
+    });
+}
+
+function buyProduct(name){
+    alert(name + " Added Successfully!");
+}
+
+display(products);
+
+search.addEventListener("keyup",filterProducts);
+brandFilter.addEventListener("change",filterProducts);
+sortPrice.addEventListener("change",filterProducts);
+
+function filterProducts(){
+
+    let value =
+    search.value.toLowerCase();
+
+    let brand =
+    brandFilter.value.toLowerCase();
+
+    let result = products.filter(item =>
+        item.pname.toLowerCase().includes(value)
+        ||
+        item.company.toLowerCase().includes(value)
+    );
+
+    if(brand !== "all"){
+
+        result = result.filter(item =>
+            item.company.toLowerCase() === brand
+        );
+    }
+
+    if(sortPrice.value === "low-high"){
+
+        result.sort((a,b)=>
+            a.price - b.price
+        );
+    }
+
+    if(sortPrice.value === "high-low"){
+
+        result.sort((a,b)=>
+            b.price - a.price
+        );
+    }
+
+    display(result);
+}
+
+</script>
+
+</body>
+</html>

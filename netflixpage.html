@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background:url("./netflix.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .overlay{
+            height: 100vh;
+            width: 100%;
+            background:rgba(0,0,0,0.7);
+        }
+
+        /* Navbar */
+
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 100px;
+            size: 30px 30px;
+        }
+        .logo{
+            color: red;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .right button{
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .language{
+            background: black;
+            color: white;
+            border: 1px solid white;
+        }
+        .signin{
+            background: red;
+            color: white;
+        }
+
+        /* content */
+
+        .content{
+            text-align: center;
+            color: white;
+            margin-top: 150px;
+        }
+        .content h1{
+            font-size: 70px;
+            font-weight: bolder;
+        }
+        .content h3{
+            margin-top: 20px;
+            font-size: 30px;
+        }
+        .content p{
+            margin-top: 30px;
+            font-size: 22px;
+        }
+
+        /* email box */
+
+        .email-box{
+            margin-top:30px;
+        }
+           .email-box input{ 
+            width: 400px;
+            padding: 18px;
+            font-size: 20px;
+            background: rgba(0,0,0,0.5);
+            border: 1px soild gray;
+            color: white;
+        }
+        .email-box button{
+            padding: 18px 40px;
+            background: red;
+            color: white;
+            border: none;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="navbar">
+    <div class="logo">NETFLIX</div>
+    <div class="right">
+        <button class="language">English </button>
+        <button class="signin">Sign In</button>
+    </div>
+    </div>
+    <div class="content">
+        <h1>Unlimited movies,<br>shows, and more</h1>
+        <h3>Starts at 149. Cancel at any time</h3>
+        <p>Ready to watch?Enter your email to create or restart your membership</p>
+        <div class="email-box">
+            <input type="text" placeholder="Email address">
+            <button class="getstarted"> Get Started > </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
